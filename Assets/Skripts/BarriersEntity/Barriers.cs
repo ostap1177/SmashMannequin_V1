@@ -65,9 +65,11 @@ namespace BarriersEntity
             if (index < _barriers.Count)
             {
                 ActiveToIndex(index);
+
+                return true;
             }
 
-            return index < _barriers.Count;
+            return false;
         }
 
         public void AddPoints(int point)

@@ -48,9 +48,11 @@ namespace Ui
             {
                 _currentScore -= point;
                 TransferadPoints?.Invoke(_currentScore);
+
+                return true;
             }
 
-            return _currentScore - point >= 0;
+            return false;
         }
 
         public void FinalCalculateScore()
