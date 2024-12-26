@@ -15,8 +15,8 @@ namespace Ui
 
         private WaitForSeconds _waitForSeconds;
 
-        public event Action ElapsedSecond;
-        public event Action EndTime;
+        public event Action SecondElapsed;
+        public event Action TimeEnded;
 
         public float SecondTime => _time;
 
@@ -65,7 +65,7 @@ namespace Ui
             while (true)
             {
                 yield return _waitForSeconds;
-                ElapsedSecond?.Invoke();
+                SecondElapsed?.Invoke();
             }
         }
 
@@ -83,7 +83,7 @@ namespace Ui
 
             _countdownTimer.enabled = false;
 
-            EndTime?.Invoke();
+            TimeEnded?.Invoke();
         }
     }
 }

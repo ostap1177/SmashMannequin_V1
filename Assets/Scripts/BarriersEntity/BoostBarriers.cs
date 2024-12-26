@@ -22,7 +22,7 @@ namespace BarriersEntity
             ButtonClicker.BarriersBoosted += OnBoost;
             AdReward.BarrierBoosted += CreateEntity;
             AdReward.ErrorVideo += OnErrorVideo;
-            _timer.EndTime += OnEndTime;
+            _timer.TimeEnded += OnTimeEnded;
         }
 
         private void OnDisable()
@@ -30,7 +30,7 @@ namespace BarriersEntity
             ButtonClicker.BarriersBoosted -= OnBoost;
             AdReward.BarrierBoosted -= CreateEntity;
             AdReward.ErrorVideo -= OnErrorVideo;
-            _timer.EndTime -= OnEndTime;
+            _timer.TimeEnded -= OnTimeEnded;
         }
 
         private void Awake()
@@ -78,7 +78,7 @@ namespace BarriersEntity
             }
         }
 
-        private void OnEndTime()
+        private void OnTimeEnded()
         {
             _isActive = false;
             CostView.EnableText(true);

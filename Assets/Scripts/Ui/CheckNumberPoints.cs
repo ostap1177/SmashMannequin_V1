@@ -11,12 +11,12 @@ namespace Ui
 
         private void OnEnable()
         {
-            _scoreCounter.TransferadPoints += OnTransfer;
+            _scoreCounter.PointsTransfered += OnTransfer;
         }
 
         private void OnDisable()
         {
-            _scoreCounter.TransferadPoints -= OnTransfer;
+            _scoreCounter.PointsTransfered -= OnTransfer;
         }
 
         private void OnTransfer(int score)

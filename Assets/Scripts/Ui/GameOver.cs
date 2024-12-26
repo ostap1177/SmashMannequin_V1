@@ -11,15 +11,15 @@ namespace Ui
 
         private void OnEnable()
         {
-            _scoreCounter.OveredGame += OnOverGame;
+            _scoreCounter.GameOvered += OnGameOvered;
         }
 
         private void OnDisable()
         {
-            _scoreCounter.OveredGame -= OnOverGame;
+            _scoreCounter.GameOvered -= OnGameOvered;
         }
 
-        private void OnOverGame()
+        private void OnGameOvered()
         {
             _boardFinal.gameObject.SetActive(true);
             _pauseObject.PauseGame();

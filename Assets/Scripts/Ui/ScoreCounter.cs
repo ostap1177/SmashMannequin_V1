@@ -11,23 +11,23 @@ namespace Ui
 
         private int _bestScore;
 
-        public event Action<int> TransferadPoints;
-        public event Action<float, float, int> FinalizeTime;
-        public event Action OveredGame;
+        public event Action<int> PointsTransfered;
+        public event Action<float, float, int> TimeFinalized;
+        public event Action GameOvered;
 
         private void OnEnable()
         {
-            _timer.ElapsedSecond += OnElapsedSecond;
+            _timer.SecondElapsed += OnSecondElapsed;
         }
 
         private void OnDisable()
         {
-            _timer.ElapsedSecond -= OnElapsedSecond;
+            _timer.SecondElapsed -= OnSecondElapsed;
         }
 
         private void Start()
         {
-            TransferadPoints?.Invoke(_currentScore);
+            PointsTransfered?.Invoke(_currentScore);
         }
 
         public void AddPoints(int point)
@@ -39,7 +39,7 @@ namespace Ui
                 _bestScore = _currentScore;
             }
 
-            TransferadPoints?.Invoke(_currentScore);
+            PointsTransfered?.Invoke(_currentScore);
         }
 
         public bool TryRemovePoint(int point)
@@ -47,7 +47,7 @@ namespace Ui
             if (_currentScore - point >= 0)
             {
                 _currentScore -= point;
-                TransferadPoints?.Invoke(_currentScore);
+                PointsTransfered?.Invoke(_currentScore);
 
                 return true;
             }
@@ -63,18 +63,18 @@ namespace Ui
             float resultMinutes = Mathf.FloorToInt(scoreInSeconds / 60);
             float resultSeconds = Mathf.FloorToInt(scoreInSeconds % 60);
 
-            FinalizeTime?.Invoke(resultMinutes, resultSeconds, _bestScore);
+            TimeFinalized?.Invoke(resultMinutes, resultSeconds, _bestScore);
         }
 
-        private void OnElapsedSecond()
+        private void OnSecondElapsed()
         {
             _currentScore -= _costSeconds;
-            TransferadPoints?.Invoke(_currentScore);
+            PointsTransfered?.Invoke(_currentScore);
 
             if (_currentScore <= 0)
             {
                 FinalCalculateScore();
-                OveredGame?.Invoke();
+                GameOvered?.Invoke();
             }
         }
     }

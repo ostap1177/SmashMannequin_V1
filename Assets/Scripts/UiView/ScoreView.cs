@@ -11,15 +11,15 @@ namespace UiView
 
         private void OnEnable()
         {
-            _scoreCounter.TransferadPoints += OnTransferadPoints;
+            _scoreCounter.PointsTransfered += OnPointsTransfered;
         }
 
         private void OnDisable()
         {
-            _scoreCounter.TransferadPoints -= OnTransferadPoints;
+            _scoreCounter.PointsTransfered -= OnPointsTransfered;
         }
 
-        private void OnTransferadPoints(int score)
+        private void OnPointsTransfered(int score)
         {
             _scoreText.text = score.ToString();
         }

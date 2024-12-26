@@ -13,15 +13,15 @@ namespace UiView
 
         private void OnEnable()
         {
-            _scoreCounter.FinalizeTime += OnFinalizeTime;
+            _scoreCounter.TimeFinalized += OnTimeFinalized;
         }
 
         private void OnDisable()
         {
-            _scoreCounter.FinalizeTime -= OnFinalizeTime;
+            _scoreCounter.TimeFinalized -= OnTimeFinalized;
         }
 
-        private void OnFinalizeTime(float minutes, float seconds, int bestScore)
+        private void OnTimeFinalized(float minutes, float seconds, int bestScore)
         {
             _bestTime.text = string.Format("{00:00}:{01:00}", minutes, seconds);
             _bestScore.text = bestScore.ToString();
