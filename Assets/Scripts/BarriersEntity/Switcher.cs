@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using Entity;
 using UnityEngine;
 
@@ -81,8 +81,8 @@ namespace BarriersEntity
                 BarriersPlace tempPlace = _places.FirstOrDefault(place => place.IsFilled == false);
                 Barriers barriers = Instantiate(
                     _identifyBarriersPrefab.ReturnBarriers(),
-                    tempPlace.transform.position, 
-                    Quaternion.identity, 
+                    tempPlace.transform.position,
+                    Quaternion.identity,
                     _transform);
 
                 tempPlace.SetBarriers(barriers);

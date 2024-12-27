@@ -23,7 +23,7 @@ namespace Ui
                 eventData.position.x,
                 eventData.position.y,
                 mainCamera.WorldToScreenPoint(transform.position).z);
-            Vector3 worldPosition = pointPosition; //mainCamera.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y,mainCamera.WorldToScreenPoint(transform.position).z));
+            Vector3 worldPosition = pointPosition;
             offset = transform.position - worldPosition;
 
             isDragging = true;
@@ -35,11 +35,11 @@ namespace Ui
             if (isDragging)
             {
                 Vector3 pointPosition = new Vector3(
-                    eventData.position.x, 
+                    eventData.position.x,
                     eventData.position.y,
                     mainCamera.WorldToScreenPoint(transform.position).z);
 
-                Vector3 worldPosition = pointPosition; 
+                Vector3 worldPosition = pointPosition;
                 transform.position = worldPosition + offset;
             }
         }
