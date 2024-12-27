@@ -49,7 +49,7 @@ namespace Shop
                     DownloadHandlerTexture handlerTexture = webRequest.downloadHandler as DownloadHandlerTexture;
                     _sprite = Sprite.Create(
                     (Texture2D)handlerTexture.texture,
-                    new Rect(0, 0, handlerTexture.texture.width,handlerTexture.texture.height),
+                    new Rect(0, 0, handlerTexture.texture.width, handlerTexture.texture.height),
                     Vector2.zero);
                 }
             }
